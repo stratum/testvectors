@@ -1,0 +1,529 @@
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\273\273\273"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\001"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\252\252\252"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3520"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 2
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\002"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 2
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\001\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+  >
+  test_case_id: "insert_write"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        data_plane_stimulus: <
+          traffic_stimulus: <
+            packets: <
+              payload: "\x00\x00\x00\xaa\xaa\xaa\x3c\xfd\xfe\xa8\xea\x30\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x40\x00\x66\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+            >
+            port: 1
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        packets: <
+          payload: "\x3c\xfd\xfe\xa8\xea\x31\x00\x00\x00\xbb\xbb\xbb\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x3f\x00\x67\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+        >
+        ports: 2
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: 1
+      >
+    >
+    expectation_id: "e2"
+  >
+  test_case_id: "packet_len_78_ttl_64_port_1"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        data_plane_stimulus: <
+          traffic_stimulus: <
+            packets: <
+              payload: "\x00\x00\x00\xbb\xbb\xbb\x3c\xfd\xfe\xa8\xea\x31\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x40\x00\x66\xcb\x0a\x02\x00\x01\x0a\x01\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+            >
+            port: 2
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        packets: <
+          payload: "\x3c\xfd\xfe\xa8\xea\x30\x00\x00\x00\xaa\xaa\xaa\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x3f\x00\x67\xcb\x0a\x02\x00\x01\x0a\x01\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+        >
+        ports: 1
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: 2
+      >
+    >
+    expectation_id: "e2"
+  >
+  test_case_id: "packet_len_78_ttl_64_port_2"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\001\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 2
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 2
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\002"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\001"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\252\252\252"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3520"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\273\273\273"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  test_case_id: "delete_write"
+>

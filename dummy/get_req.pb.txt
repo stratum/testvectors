@@ -1,0 +1,114 @@
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "1/2/1"
+            >
+          >
+          elem: <
+            name: "state"
+          >
+          elem: <
+            name: "ifindex"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1559249206121944730
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "1/2/1"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "ifindex"
+              >
+            >
+            val: <
+              uint_val: 2
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "1/2/1"
+            >
+          >
+          elem: <
+            name: "state"
+          >
+          elem: <
+            name: "name"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1559249206125637387
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "1/2/1"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "name"
+              >
+            >
+            val: <
+              string_val: "1/2/1"
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e2"
+  >
+  expectations: <
+    expectation_id: "e3"
+  >
+  test_case_id: "tc1"
+>

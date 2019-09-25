@@ -1,0 +1,416 @@
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          pipeline_config_operation: <
+            p4_set_pipeline_config_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              action: VERIFY_AND_COMMIT
+              config: <
+                p4info: <
+                  pkg_info: <
+                    arch: "v1model"
+                  >
+                  tables: <
+                    preamble: <
+                      id: 33572104
+                      name: "ingress.l3_fwd.l3_fwd_table"
+                      alias: "l3_fwd_table"
+                      annotations: "@switchstack(\"pipeline_stage: L3_LPM\")"
+                    >
+                    match_fields: <
+                      id: 1
+                      name: "local_metadata.vrf_id"
+                      bitwidth: 10
+                      match_type: EXACT
+                    >
+                    match_fields: <
+                      id: 2
+                      name: "hdr.ipv4_base.dst_addr"
+                      bitwidth: 32
+                      match_type: LPM
+                    >
+                    action_refs: <
+                      id: 16782370
+                    >
+                    action_refs: <
+                      id: 16819938
+                    >
+                    action_refs: <
+                      id: 16822646
+                    >
+                    const_default_action_id: 16819938
+                    implementation_id: 285233948
+                    size: 1024
+                  >
+                  tables: <
+                    preamble: <
+                      id: 33582129
+                      name: "ingress.l2_fwd.l2_unicast_table"
+                      alias: "l2_unicast_table"
+                      annotations: "@switchstack(\"pipeline_stage: L2\")"
+                    >
+                    match_fields: <
+                      id: 1
+                      name: "hdr.ethernet.dst_addr"
+                      bitwidth: 48
+                      match_type: EXACT
+                    >
+                    action_refs: <
+                      id: 16838806
+                    >
+                    action_refs: <
+                      id: 16800567
+                      scope: DEFAULT_ONLY
+                      annotations: "@defaultonly"
+                    >
+                    size: 1024
+                  >
+                  tables: <
+                    preamble: <
+                      id: 33598026
+                      name: "ingress.punt.punt_table"
+                      alias: "punt_table"
+                      annotations: "@switchstack(\"pipeline_stage: INGRESS_ACL\")"
+                    >
+                    match_fields: <
+                      id: 1
+                      name: "standard_metadata.ingress_port"
+                      bitwidth: 9
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 2
+                      name: "standard_metadata.egress_spec"
+                      bitwidth: 9
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 3
+                      name: "hdr.ethernet.ether_type"
+                      bitwidth: 16
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 4
+                      name: "hdr.ipv4_base.diffserv"
+                      bitwidth: 8
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 5
+                      name: "hdr.ipv4_base.ttl"
+                      bitwidth: 8
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 6
+                      name: "hdr.ipv4_base.src_addr"
+                      bitwidth: 32
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 7
+                      name: "hdr.ipv4_base.dst_addr"
+                      bitwidth: 32
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 8
+                      name: "hdr.ipv4_base.protocol"
+                      bitwidth: 8
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 9
+                      name: "local_metadata.icmp_code"
+                      bitwidth: 8
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 10
+                      name: "hdr.vlan_tag[0].vid"
+                      bitwidth: 12
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 11
+                      name: "hdr.vlan_tag[0].pcp"
+                      bitwidth: 3
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 12
+                      name: "local_metadata.class_id"
+                      bitwidth: 8
+                      match_type: TERNARY
+                    >
+                    match_fields: <
+                      id: 13
+                      name: "local_metadata.vrf_id"
+                      bitwidth: 10
+                      match_type: TERNARY
+                    >
+                    action_refs: <
+                      id: 16824483
+                    >
+                    action_refs: <
+                      id: 16804007
+                    >
+                    action_refs: <
+                      id: 16820507
+                    >
+                    action_refs: <
+                      id: 16800567
+                      scope: DEFAULT_ONLY
+                      annotations: "@defaultonly"
+                    >
+                    direct_resource_ids: 318787623
+                    direct_resource_ids: 352360565
+                    size: 25
+                  >
+                  tables: <
+                    preamble: <
+                      id: 33573106
+                      name: "ingress.my_station_table"
+                      alias: "my_station_table"
+                      annotations: "@switchstack(\"pipeline_stage: L2\")"
+                    >
+                    match_fields: <
+                      id: 1
+                      name: "hdr.ethernet.dst_addr"
+                      bitwidth: 48
+                      match_type: TERNARY
+                    >
+                    action_refs: <
+                      id: 16832439
+                    >
+                    action_refs: <
+                      id: 16819938
+                    >
+                    size: 1024
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16819938
+                      name: "nop"
+                      alias: "nop"
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16800567
+                      name: "NoAction"
+                      alias: "NoAction"
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16822646
+                      name: "ingress.l3_fwd.drop"
+                      alias: "drop"
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16782370
+                      name: "ingress.l3_fwd.set_nexthop"
+                      alias: "set_nexthop"
+                    >
+                    params: <
+                      id: 1
+                      name: "port"
+                      bitwidth: 9
+                    >
+                    params: <
+                      id: 2
+                      name: "smac"
+                      bitwidth: 48
+                    >
+                    params: <
+                      id: 3
+                      name: "dmac"
+                      bitwidth: 48
+                    >
+                    params: <
+                      id: 4
+                      name: "dst_vlan"
+                      bitwidth: 12
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16838806
+                      name: "ingress.l2_fwd.set_egress_port"
+                      alias: "l2_fwd.set_egress_port"
+                    >
+                    params: <
+                      id: 1
+                      name: "port"
+                      bitwidth: 9
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16824483
+                      name: "ingress.punt.set_queue_and_clone_to_cpu"
+                      alias: "set_queue_and_clone_to_cpu"
+                    >
+                    params: <
+                      id: 1
+                      name: "queue_id"
+                      bitwidth: 5
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16804007
+                      name: "ingress.punt.set_queue_and_send_to_cpu"
+                      alias: "set_queue_and_send_to_cpu"
+                    >
+                    params: <
+                      id: 1
+                      name: "queue_id"
+                      bitwidth: 5
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16820507
+                      name: "ingress.punt.set_egress_port"
+                      alias: "punt.set_egress_port"
+                    >
+                    params: <
+                      id: 1
+                      name: "port"
+                      bitwidth: 9
+                    >
+                  >
+                  actions: <
+                    preamble: <
+                      id: 16832439
+                      name: "ingress.set_l3_admit"
+                      alias: "set_l3_admit"
+                    >
+                  >
+                  action_profiles: <
+                    preamble: <
+                      id: 285233948
+                      name: "ingress.l3_fwd.wcmp_action_profile"
+                      alias: "wcmp_action_profile"
+                    >
+                    table_ids: 33572104
+                    with_selector: true
+                    size: 1024
+                    max_group_size: 8
+                  >
+                  direct_counters: <
+                    preamble: <
+                      id: 318787623
+                      name: "ingress.punt.punt_packet_counter"
+                      alias: "punt_packet_counter"
+                    >
+                    spec: <
+                      unit: PACKETS
+                    >
+                    direct_table_id: 33598026
+                  >
+                  direct_meters: <
+                    preamble: <
+                      id: 352360565
+                      name: "ingress.punt.ingress_port_meter"
+                      alias: "ingress_port_meter"
+                    >
+                    spec: <
+                      unit: BYTES
+                    >
+                    direct_table_id: 33598026
+                  >
+                  controller_packet_metadata: <
+                    preamble: <
+                      id: 67146229
+                      name: "packet_in"
+                      alias: "packet_in"
+                      annotations: "@controller_header(\"packet_in\")"
+                    >
+                    metadata: <
+                      id: 1
+                      name: "ingress_physical_port"
+                      annotations: "@switchstack(\"field_type: P4_FIELD_TYPE_INGRESS_PORT\")"
+                      annotations: "@proto_tag(1)"
+                      bitwidth: 9
+                    >
+                    metadata: <
+                      id: 2
+                      name: "padding1"
+                      annotations: "@proto_tag(2)"
+                      bitwidth: 7
+                    >
+                    metadata: <
+                      id: 3
+                      name: "ingress_logical_port"
+                      annotations: "@proto_tag(3)"
+                      bitwidth: 32
+                    >
+                    metadata: <
+                      id: 4
+                      name: "target_egress_port"
+                      annotations: "@switchstack(\"field_type: P4_FIELD_TYPE_EGRESS_PORT\")"
+                      annotations: "@proto_tag(4)"
+                      bitwidth: 9
+                    >
+                    metadata: <
+                      id: 5
+                      name: "padding2"
+                      annotations: "@proto_tag(5)"
+                      bitwidth: 7
+                    >
+                  >
+                  controller_packet_metadata: <
+                    preamble: <
+                      id: 67121543
+                      name: "packet_out"
+                      alias: "packet_out"
+                      annotations: "@not_extracted_in_egress"
+                      annotations: "@controller_header(\"packet_out\")"
+                    >
+                    metadata: <
+                      id: 1
+                      name: "egress_physical_port"
+                      annotations: "@switchstack(\"field_type: P4_FIELD_TYPE_EGRESS_PORT\")"
+                      annotations: "@proto_tag(1)"
+                      bitwidth: 9
+                    >
+                    metadata: <
+                      id: 2
+                      name: "submit_to_ingress"
+                      annotations: "@proto_tag(2)"
+                      bitwidth: 1
+                    >
+                    metadata: <
+                      id: 3
+                      name: "padding"
+                      annotations: "@proto_tag(3)"
+                      bitwidth: 6
+                    >
+                  >
+                  type_info: <
+                  >
+                >
+                p4_device_config: "\n\023\n\rhdr.packet_in\022\002\"\000\n!\n\022hdr.tcp.urgent_ptr\022\013\022\t\010\001\030\220\001 \0208\t\n\024\n\016local_metadata\022\002\"\000\n\036\n\023ingress.l3_fwd.drop\022\007\032\005\010\001\032\001\001\nD\n\027local_metadata.class_id\022)\022'\010\031\022\004\010\004\020\003 \0100\001B\031\n\027ingress.punt.punt_table\n\232\001\n\034ingress.punt.set_egress_port\022z\032x\010\001\022K\n\037\032\035standard_metadata.egress_spec\"(local_metadata.egress_spec_at_punt_match\022'\n\006\n\004port\"\035standard_metadata.egress_spec\n\324\001\n&ingress.punt.set_queue_and_send_to_cpu\022\251\001\032\246\001\010\001\022-\n\n\n\010queue_id\"\037local_metadata.cpu_cos_queue_id\022K\n\037\032\035standard_metadata.egress_spec\"(local_metadata.egress_spec_at_punt_match\022&\n\005\020\375\001P\t\"\035standard_metadata.egress_spec\n'\n\031hdr.arp.sender_proto_addr\022\n\022\010\010\001\030p  8\001\n%\n\027hdr.ipv4_base.total_len\022\n\022\010\010\014\030\020 \0208\005\n&\n\034packet_in.target_egress_port\022\006\022\004\010\033 \t\n*\n\034hdr.ipv4_base.identification\022\n\022\010\010\001\030  \0208\005\n'\n\023hdr.vlan_tag[0].vid\022\020\022\016\010\005\022\004\010\004\020\003\030\004 \0148\013\n&\n\034packet_out.submit_to_ingress\022\006\022\004\010\001 \001\n\025\n\rhdr.ipv6_base\022\004\"\002\010\006\n&\n\026hdr.ipv6_base.dst_addr\022\014\022\n\010\020\030\300\001 \200\0018\006\n*\n standard_metadata.checksum_error\022\006\022\004\010\001 \001\n-\n#hdr.packet_in.ingress_physical_port\022\006\022\004\010\034 \t\n(\n\032hdr.ipv4_base.hdr_checksum\022\n\022\010\010\001\030P \0208\005\n\034\n\016hdr.tcp.window\022\n\022\010\010\001\030p \0208\t\n%\n\027hdr.ipv6_base.hop_limit\022\n\022\010\010\016\0308 \0108\006\n \n\026hdr.packet_out.padding\022\006\022\004\010\001 \006\nO\n\036ingress.l2_fwd.set_egress_port\022-\032+\010\001\022'\n\006\n\004port\"\035standard_metadata.egress_spec\n#\n\027local_metadata.dst_vlan\022\010\022\006\010\005 \0140\001\n!\n\023hdr.vlan_tag[0].cfi\022\n\022\010\010\001\030\003 \0018\013\n%\n\026hdr.ipv6_base.src_addr\022\013\022\t\010\017\030@ \200\0018\006\n$\n\026hdr.arp.sender_hw_addr\022\n\022\010\010\001\030@ 08\001\n)\n\037standard_metadata.packet_length\022\006\022\004\010\001  \n\027\n\021standard_metadata\022\002\"\000\n\"\n\024hdr.icmp_header.code\022\n\022\010\010\024\030\010 \0108\004\nE\n\030local_metadata.icmp_code\022)\022'\010\001\022\004\010\004\020\003 \0100\001B\031\n\027ingress.punt.punt_table\n%\n\031hdr.icmp_header.icmp_type\022\010\022\006\010- \0108\004\n4\n(local_metadata.egress_spec_at_punt_match\022\010\022\006\010\033 \t0\001\n*\n hdr.packet_in.target_egress_port\022\006\022\004\010\033 \t\n)\n\033hdr.ipv6_base.traffic_class\022\n\022\010\010\022\030\004 \0108\006\n!\n\023hdr.vlan_tag[1].vid\022\n\022\010\010\005\030\004 \0148\013\n(\n\032hdr.vlan_tag[0].ether_type\022\n\022\010\010\004\030\020 \0208\013\n1\n\026hdr.ipv4_base.dst_addr\022\027\022\025\010\010\022\004\010\003\020\003\022\004\010\004\020\003\030\200\001  8\005\n*\n hdr.packet_out.submit_to_ingress\022\006\022\004\010\001 \001\n3\n)standard_metadata.egress_global_timestamp\022\006\022\004\010\001 0\n*\n\026hdr.ipv4_base.diffserv\022\020\022\016\010\n\022\004\010\004\020\003\030\010 \0108\005\n!\n\023hdr.ipv4_base.flags\022\n\022\010\010\001\0300 \0038\005\n \n\026hdr.packet_in.padding1\022\006\022\004\010\001 \007\n \n\026hdr.packet_in.padding2\022\006\022\004\010\001 \007\n\020\n\npacket_out\022\002\"\000\n\034\n\022packet_out.padding\022\006\022\004\010\001 \006\n%\n\033standard_metadata.mcast_grp\022\006\022\004\0102 \020\n!\n\023hdr.arp.hw_addr_len\022\n\022\010\010\001\030  \0108\001\n)\n\037packet_out.egress_physical_port\022\006\022\004\010\033 \t\n&\n\034standard_metadata.deq_qdepth\022\006\022\004\010\001 \023\n#\n\027local_metadata.l3_admit\022\010\022\006\0103 \0010\001\n.\n\026hdr.ipv4_base.src_addr\022\024\022\022\010\007\022\002\020\003\022\004\010\004\020\003\030`  8\005\n!\n\023hdr.vlan_tag[1].cfi\022\n\022\010\010\001\030\003 \0018\013\n\033\n\017hdr.arp.hw_type\022\010\022\006\010\001 \0208\001\n\"\n\030ingress.my_station_table\022\006\n\004\010\004\020\002\n\033\n\rhdr.tcp.flags\022\n\022\010\010\001\030h \0108\t\n%\n\023hdr.vlan_tag[0].pcp\022\016\022\014\010\006\022\004\010\004\020\003 \0038\013\n)\n\037standard_metadata.instance_type\022\006\022\004\010\001  \n%\n\033ingress.l3_fwd.l3_fwd_table\022\006\n\004\010\001\020\003\n\254\001\n'ingress.punt.set_queue_and_clone_to_cpu\022\200\001\032~\010\001\022-\n\n\n\010queue_id\"\037local_metadata.cpu_cos_queue_id\022K\n\037\032\035standard_metadata.egress_spec\"(local_metadata.egress_spec_at_punt_match\n-\n\025hdr.ethernet.dst_addr\022\024\022\022\010\003\022\004\010\002\020\004\022\004\010\004\020\005 08\002\n.\n\036standard_metadata.ingress_port\022\014\022\n\010\034\022\004\010\004\020\003 \t\n\034\n\016hdr.tcp.seq_no\022\n\022\010\010\001\030   8\t\n\017\n\007hdr.tcp\022\004\"\002\010\t\n\034\n\022packet_in.padding1\022\006\022\004\010\001 \007\n\034\n\022packet_in.padding2\022\006\022\004\010\001 \007\n\036\n\020hdr.udp.dst_port\022\n\022\010\010\026\030\020 \0208\n\n*\n\032local_metadata.l4_dst_port\022\014\022\n\010\026\022\002\020\003 \0200\001\n(\n\036packet_in.ingress_logical_port\022\006\022\004\010\001  \n$\n\032standard_metadata.priority\022\006\022\004\010\001 \003\n+\n\027hdr.ethernet.ether_type\022\020\022\016\010\004\022\004\010\004\020\003\030` \0208\002\n#\n\025hdr.ethernet.src_addr\022\n\022\010\010\002\0300 08\002\n.\n\026hdr.ipv4_base.protocol\022\024\022\022\010\t\022\002\020\003\022\004\010\004\020\003\030H \0108\005\n!\n\025hdr.ipv4_base.version\022\010\022\006\010\r \0048\005\n\037\n\021hdr.ipv4_base.ihl\022\n\022\010\010\013\030\004 \0048\005\n\031\n\013hdr.tcp.res\022\n\022\010\010\001\030d \0048\t\n)\n\037standard_metadata.enq_timestamp\022\006\022\004\010\001  \n \n\022hdr.udp.hdr_length\022\n\022\010\010\001\030  \0208\n\n'\n\035standard_metadata.egress_port\022\006\022\004\010\033 \t\n\036\n\020hdr.udp.checksum\022\n\022\010\010\001\0300 \0208\n\n\034\n\020hdr.udp.src_port\022\010\022\006\010\025 \0208\n\n*\n\032local_metadata.l4_src_port\022\014\022\n\010\025\022\002\020\003 \0200\001\n\017\n\007hdr.udp\022\004\"\002\010\n\n,\n\"hdr.packet_in.ingress_logical_port\022\006\022\004\010\001  \n \n\022hdr.arp.proto_type\022\n\022\010\010\001\030\020 \0208\001\n#\n\025hdr.vlan_tag.last.vid\022\n\022\010\010\005\030\004 \0148\013\n(\n\032hdr.vlan_tag[1].ether_type\022\n\022\010\010\004\030\020 \0208\013\n\037\n\023hdr.vlan_tag[1].pcp\022\010\022\006\010\006 \0038\013\n&\n\030hdr.ipv6_base.flow_label\022\n\022\010\010\001\030\014 \0248\006\n\024\n\016hdr.packet_out\022\002\"\000\n&\n\032local_metadata.skip_egress\022\010\022\006\010\001 \0010\001\n&\n\034standard_metadata.enq_qdepth\022\006\022\004\010\001 \023\n\036\n\020hdr.tcp.dst_port\022\n\022\010\010\026\030\020 \0208\t\n%\n\026hdr.arp.target_hw_addr\022\013\022\t\010\001\030\220\001 08\001\n\034\n\016hdr.arp.opcode\022\n\022\010\010\001\0300 \0208\001\n\025\n\rhdr.ipv4_base\022\004\"\002\010\005\n)\n\037standard_metadata.deq_timedelta\022\006\022\004\010\001  \n!\n\025hdr.ipv6_base.version\022\010\022\006\010\r \0048\006\n \n\024local_metadata.color\022\010\022\006\010\032 \0020\001\n'\n\031hdr.ipv6_base.next_header\022\n\022\010\010\021\0300 \0108\006\n4\n\037ingress.l2_fwd.l2_unicast_table\022\021\n\017\010\005\020\002\"\t\010\005\022\005\r\001\000\000\000\n#\n\025hdr.vlan_tag.last.cfi\022\n\022\010\010\001\030\003 \0018\013\n!\n\023hdr.tcp.data_offset\022\n\022\010\010\001\030` \0048\t\n(\n\031hdr.arp.target_proto_addr\022\013\022\t\010\027\030\300\001  8\001\n$\n\026hdr.arp.proto_addr_len\022\n\022\010\010\001\030( \0108\001\n\017\n\tpacket_in\022\002\"\000\n-\n#hdr.packet_out.egress_physical_port\022\006\022\004\010\033 \t\n)\n\037packet_in.ingress_physical_port\022\006\022\004\010\034 \t\n\037\n\020hdr.tcp.checksum\022\013\022\t\010\001\030\200\001 \0208\t\n\034\n\020hdr.tcp.src_port\022\010\022\006\010\025 \0208\t\n\266\001\n\032ingress.l3_fwd.set_nexthop\022\227\001\032\224\001\010\001\022'\n\006\n\004port\"\035standard_metadata.egress_spec\022%\n\n\n\010dst_vlan\"\027local_metadata.dst_vlan\022\037\n\006\n\004smac\"\025hdr.ethernet.src_addr\022\037\n\006\n\004dmac\"\025hdr.ethernet.dst_addr\n*\n\034hdr.ipv6_base.payload_length\022\n\022\010\010\023\030  \0208\006\n\031\n\021hdr.vlan_tag.last\022\004\"\002\010\013\n4\n*standard_metadata.ingress_global_timestamp\022\006\022\004\010\001 0\n'\n\031hdr.ipv4_base.frag_offset\022\n\022\010\010\001\0303 \r8\005\n-\n\035standard_metadata.egress_spec\022\014\022\n\010\033\022\004\010\004\020\003 \t\n\037\n\027ingress.punt.punt_table\022\004\n\002\020\004\n*\n\034hdr.vlan_tag.last.ether_type\022\n\022\010\010\004\030\020 \0208\013\n%\n\021hdr.ipv4_base.ttl\022\020\022\016\010\016\022\004\010\004\020\003\030@ \0108\005\n\024\n\014hdr.ethernet\022\004\"\002\010\002\n&\n\030hdr.icmp_header.checksum\022\n\022\010\010\001\030\020 \0208\004\n\023\n\010NoAction\022\007\032\005\010\001\032\001\002\n\027\n\017hdr.vlan_tag[0]\022\004\"\002\010\013\n=\n\024ingress.set_l3_admit\022%\032#\010\001\022\037\n\004\020\001P\001\"\027local_metadata.l3_admit\n\017\n\007hdr.arp\022\004\"\002\010\001\n\027\n\017hdr.vlan_tag[1]\022\004\"\002\010\013\ng\n\025local_metadata.vrf_id\022N\022L\010\030\022\004\010\002\020\002\022\004\010\004\020\003 \n0\001B\035\n\033ingress.l3_fwd.l3_fwd_tableB\031\n\027ingress.punt.punt_table\n\034\n\016hdr.tcp.ack_no\022\n\022\010\010\001\030@  8\t\n!\n\025hdr.vlan_tag.last.pcp\022\010\022\006\010\006 \0038\013\n\027\n\017hdr.icmp_header\022\004\"\002\010\004\n&\n\034standard_metadata.egress_rid\022\006\022\004\010\001 \020\n\016\n\003nop\022\007\032\005\010\001\032\001\002\n+\n\037local_metadata.cpu_cos_queue_id\022\010\022\006\010+ \0050\001\022\226\002\n\014pkt_deparser\032\205\002\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\n\033\222\003\030extern method packet_out\022Q\n\024verify_ipv4_checksum\0329\n7\222\0034MethodCallExpression extern function verify_checksum\022R\n\025compute_ipv4_checksum\0329\n7\222\0034MethodCallExpression extern function update_checksum\022\375\001\n\007ingress\020\001\032\357\001\nP\022N\n\022\032\020\n\016hdr.packet_out\0228\n\027\222\003\024Assignment statement\n\035\222\003\032built-in method setInvalid\nw2u\010\002\022!\n\030ingress.my_station_table\020\362\221\201\020\030\002\022$\n\033ingress.l3_fwd.l3_fwd_table\020\210\212\201\020\030\003\022(\n\037ingress.l2_fwd.l2_unicast_table\020\261\330\201\020\030\002\n\"\n \n\027ingress.punt.punt_table\020\312\324\202\020\030\004\022\221\001\n\006egress\020\002\032\204\001\n\201\001\022\177\n(\222\003%standard_metadata.egress_port == 0xfd\022S\n\033\222\003\030built-in method setValid\n\027\222\003\024Assignment statement\n\027\222\003\024Assignment statement\n\002(\001\032\005\001\005\006\007\010\"\000"
+              >
+            >
+            p4_set_pipeline_config_response: <
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  test_case_id: "tc1"
+>

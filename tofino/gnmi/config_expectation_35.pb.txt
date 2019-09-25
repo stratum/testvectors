@@ -1,0 +1,57 @@
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "49/0"
+            >
+          >
+          elem: <
+            name: "config"
+          >
+          elem: <
+            name: "health-indicator"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1565371148943912337
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "49/0"
+                >
+              >
+              elem: <
+                name: "config"
+              >
+              elem: <
+                name: "health-indicator"
+              >
+            >
+            val: <
+              string_val: "GOOD"
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "tc1"
+>

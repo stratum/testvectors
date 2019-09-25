@@ -1,0 +1,57 @@
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "1/0"
+            >
+          >
+          elem: <
+            name: "config"
+          >
+          elem: <
+            name: "enabled"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1565370535404649597
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "1/0"
+                >
+              >
+              elem: <
+                name: "config"
+              >
+              elem: <
+                name: "enabled"
+              >
+            >
+            val: <
+              bool_val: false
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "tc1"
+>
