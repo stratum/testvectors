@@ -1,0 +1,17 @@
+syntax = "proto3";
+package stratum.testing;
+message Credentials {
+    string username = 1;
+    string password = 2;
+  }
+  // Defines the properties of the SUT which are required by the test vectors.
+message Target {
+    //ip:port of the SUT
+    string address = 1;
+    Credentials credentials = 2;
+    // A unique identifier for the SUT. The main purpose is to be able to
+    // find the SUT upon a failure.
+    string target_id = 3;
+    int32 timeout = 4;
+    // TODO(aghaffar)
+  }
