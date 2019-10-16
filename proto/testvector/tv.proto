@@ -1,3 +1,8 @@
+/*
+*Copyright 2019-present Open Networking Foundation
+*
+*SPDX-License-Identifier: Apache-2.0
+ */
 // This file includes the proto definitions for test vectors used for blackbox
 // testing. For more details see go/blackbox-sw-qual.
 // TODO: This is still WIP. Expect changes etc.

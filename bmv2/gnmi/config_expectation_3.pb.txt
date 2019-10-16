@@ -1,3 +1,8 @@
+#
+#Copyright 2019-present Open Networking Foundation
+#
+#SPDX-License-Identifier: Apache-2.0
+#
 test_cases: <
   expectations: <
     config_expectation: <
@@ -45,7 +50,7 @@ test_cases: <
               >
             >
             val: <
-              bool_val: false
+              bool_val: true
             >
           >
         >
