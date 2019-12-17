@@ -36,6 +36,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -69,6 +70,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -109,6 +111,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -149,6 +152,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -186,6 +190,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -223,6 +228,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -341,6 +347,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -378,6 +385,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -418,6 +426,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -458,6 +467,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -491,6 +501,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -524,6 +535,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
