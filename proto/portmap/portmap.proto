@@ -1,0 +1,23 @@
+/*
+ * Copyright 2019-present Open Networking Foundation
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+syntax = "proto3";
+
+package stratum.testing;
+
+message Entry {
+  enum PortType {
+    IN_OUT = 0; // This port could be used as ingress/egress to switch
+    IN = 1;     // This port could only be used as ingress to switch
+    OUT = 2;    // This port could only be used as egress to switch
+  }
+  int32 port_number = 1;
+  string interface_name = 2;
+  PortType port_type = 3;
+}
+
+message PortMap {
+  repeated Entry entries = 1;
+}

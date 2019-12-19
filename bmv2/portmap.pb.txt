@@ -1,0 +1,15 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+entries: <
+  port_number: 1
+  interface_name: "veth0"
+  port_type: Entry_IN_OUT
+>
+entries: <
+  port_number: 2
+  interface_name: "veth2"
+  port_type: Entry_IN_OUT
+>
