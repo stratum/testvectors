@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 entries: <
-  port_number: 1
-  interface_name: "veth0"
+  port_number: 58
+  interface_name: "ens6f0"
   port_type: 0
 >
 entries: <
-  port_number: 2
-  interface_name: "veth2"
+  port_number: 62
+  interface_name: "ens6f1"
   port_type: 0
 >
