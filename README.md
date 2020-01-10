@@ -16,10 +16,10 @@ Take `tofino` as an example, Test Vectors under `tofino` folder are organized in
 
 > Note: please always use `.pb.txt` as filename extension when creating new Test Vectors. Files with other extensions might be ignored by a Test Vectors runner.
 
-There are three other files under the same folder i.e. `PipelineConfig.pb.txt`, `target.pb.txt` and `port-map.json`.
+There are three other files under the same folder i.e. `PipelineConfig.pb.txt`, `target.pb.txt` and `portmap.pb.txt`.
 * `PipelineConfig.pb.txt` is normally executed first to push a pipeline configuration to the switch under test.
 * `target.pb.txt` stores the IP and port of the switch under test which could be used by a Test Vectors runner to connect to the switch. E.g. `address: "127.0.0.1:28000"`
-* `port-map.json` stores a mapping between the switch port numbers used in Test Vectors and physical or virtual interface names connected to the switch ports.  E.g. `{ "176": "ens6f0", "160": "ens6f1" }` means interface `ens6f0` is connected to switch port `176` and interface `ens6f1` is connected to switch port `160`. The interfaces could be used by a Test Vectors runner to send or receive packets when Test Vectors contain Actions/Expectations that involve packets sending/receiving in the data plane.
+* `portmap.pb.txt` contains a list of entries, each of which stores infomation related to a specific switch port used in the Test Vectors including port number, port type (see proto/portmap/portmap.proto for definition) and name of physical or virtual interface connected to the switch port. E.g. a portmap entry with `port_number: 58`, `interface_name: "ens6f0"` and `port_type: 0` means interface `ens6f0` is connected to switch port `58` and could be used as both ingress and egress to switch. The interfaces could be used by a Test Vectors runner to send or receive packets when Test Vectors contain Actions/Expectations that involve packets sending/receiving in the data plane.
 
 ## Run Test Vectors-based Tests
 

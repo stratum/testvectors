@@ -1,0 +1,15 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+entries: <
+  port_number: 176
+  interface_name: "ens6f0"
+  port_type: 0
+>
+entries: <
+  port_number: 160
+  interface_name: "ens6f1"
+  port_type: 0
+>
