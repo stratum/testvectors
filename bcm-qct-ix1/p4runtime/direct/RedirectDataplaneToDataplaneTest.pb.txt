@@ -1,0 +1,311 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\105"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+  >
+  test_case_id: "insert_write"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        data_plane_stimulus: <
+          traffic_stimulus: <
+            packets: <
+              payload: "\x00\x00\x00\xAA\xAA\xAA\x3C\xFD\xFE\xA8\xEA\x30\x08\x00\x45\x00\x00\x6A\x00\x01\x00\x00\x40\x06\x66\x89\x0A\x01\x00\x01\x0A\x02\x00\x01\x04\xD2\x00\x50\x00\x00\x00\x00\x00\x00\x00\x00\x50\x02\x20\x00\xE4\xE5\x00\x00\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F\x40\x41"
+            >
+            port: 37
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: 37
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        packets: <
+          payload: "\x3C\xFD\xFE\xA8\xEA\x31\x00\x00\x00\xBB\xBB\xBB\x08\x00\x45\x00\x00\x6A\x00\x01\x00\x00\x3F\x06\x67\x89\x0A\x01\x00\x01\x0A\x02\x00\x01\x04\xD2\x00\x50\x00\x00\x00\x00\x00\x00\x00\x00\x50\x02\x20\x00\xE4\xE5\x00\x00\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1A\x1B\x1C\x1D\x1E\x1F\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2A\x2B\x2C\x2D\x2E\x2F\x30\x31\x32\x33\x34\x35\x36\x37\x38\x39\x3A\x3B\x3C\x3D\x3E\x3F\x40\x41"
+        >
+        ports: 69
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "packet_len_78_ttl_64_port_1"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          packet_out_operation: <
+            p4_packet_out: <
+              payload: "\x3c\xfd\xfe\xa8\xea\x31\x00\x00\x00\xc0\x1a\x10\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x40\x00\x66\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+              metadata: <
+                metadata_id: 1
+                value: "\000\105"
+              >
+            >
+            num_of_packets: 1
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        packets: <
+          payload: "\x3c\xfd\xfe\xa8\xea\x31\x00\x00\x00\xc0\x1a\x10\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x40\x00\x66\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+        >
+        ports: 69
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "packetout_len_78_ttl_64_port_2"
+>
+
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    priority: 0
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\076"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    priority: 10
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  test_case_id: "delete_write"
+>

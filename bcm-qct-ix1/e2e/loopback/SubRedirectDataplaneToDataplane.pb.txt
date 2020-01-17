@@ -1,0 +1,367 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                    priority: 10
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\107"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  test_case_id: "insert_write"
+>
+test_cases: <
+  expectations: <
+    telemetry_expectation: <
+      requirement: <
+      >
+      gnmi_subscribe_request: <
+        subscribe: <
+          subscription: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "4/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "counters"
+              >
+              elem: <
+                name: "out-unicast-pkts"
+              >
+            >
+            mode: SAMPLE
+            sample_interval: 3000
+          >
+          updates_only: true
+        >
+      >
+      action_group: <
+        sequential_action_group: <
+          actions: <
+            data_plane_stimulus: <
+              traffic_stimulus: <
+                port: 70
+                packets: <
+                  payload: "\000\000\000\252\252\252<\375\376\250\3520\010\000E\000\000.\000\001\000\000@\000f\313\n\001\000\001\n\002\000\001\000\001\002\003\004\005\006\007\010\t\n\013\014\r\016\017\020\021\022\023\024\025\026\027\030\031"
+                >
+              >
+            >
+          >
+        >
+        action_group_id: "ag1"
+      >
+      gnmi_subscribe_response: <
+        update: <
+          timestamp: 1565803374558346300
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "4/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "counters"
+              >
+              elem: <
+                name: "out-unicast-pkts"
+              >
+            >
+            val: <
+              uint_val: 0
+            >
+          >
+        >
+      >
+      gnmi_subscribe_response: <
+        update: <
+          timestamp: 1565803384558035233
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "4/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "counters"
+              >
+              elem: <
+                name: "out-unicast-pkts"
+              >
+            >
+            val: <
+              uint_val: 1
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: 71
+        packets: <
+          payload: "<\375\376\250\3521\000\000\000\273\273\273\010\000E\000\000.\000\001\000\000?\000g\313\n\001\000\001\n\002\000\001\000\001\002\003\004\005\006\007\010\t\n\013\014\r\016\017\020\021\022\023\024\025\026\027\030\031"
+        >
+      >
+    >
+    expectation_id: "e2"
+  >
+  test_case_id: "subscribe"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33572104
+                    match: <
+                      field_id: 1
+                      exact: <
+                        value: "\000\000"
+                      >
+                    >
+                    match: <
+                      field_id: 2
+                      lpm: <
+                        value: "\n\002\000\000"
+                        prefix_len: 16
+                      >
+                    >
+                    action: <
+                      action_profile_member_id: 1
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  action_profile_member: <
+                    action_profile_id: 285233948
+                    member_id: 1
+                    action: <
+                      action_id: 16782370
+                      params: <
+                        param_id: 1
+                        value: "\000\107"
+                      >
+                      params: <
+                        param_id: 2
+                        value: "\000\000\000\273\273\273"
+                      >
+                      params: <
+                        param_id: 3
+                        value: "<\375\376\250\3521"
+                      >
+                      params: <
+                        param_id: 4
+                        value: "\000\001"
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33573106
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\000\000\252\252\252"
+                        mask: "\377\377\377\377\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16832439
+                      >
+                    >
+                    priority: 10
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag2"
+  >
+  test_case_id: "delete_write"
+>
