@@ -1,0 +1,140 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "*"
+            >
+          >
+          elem: <
+            name: "state"
+          >
+          elem: <
+            name: "ifindex"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1566578651376890097
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "1/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "ifindex"
+              >
+            >
+            val: <
+              uint_val: 128
+            >
+          >
+        >
+        notification: <
+          timestamp: 1566578651377017085
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "2/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "ifindex"
+              >
+            >
+            val: <
+              uint_val: 136
+            >
+          >
+        >
+        notification: <
+          timestamp: 1566578651377130963
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "3/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "ifindex"
+              >
+            >
+            val: <
+              uint_val: 144
+            >
+          >
+        >
+        notification: <
+          timestamp: 1566578651377228433
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "4/0"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "ifindex"
+              >
+            >
+            val: <
+              uint_val: 152
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "tc1"
+>

@@ -1,0 +1,7 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+address: "10.128.13.232:28000"
+target_id: "t1"

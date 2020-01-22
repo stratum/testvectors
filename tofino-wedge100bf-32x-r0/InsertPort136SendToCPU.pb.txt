@@ -1,0 +1,51 @@
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33598026
+                    priority: 100
+                    match: <
+                      field_id: 3
+                      ternary: <
+                        value: "\010\000"
+                        mask: "\377\377"
+                      >
+                    >
+                    match: <
+                      field_id: 1
+                      ternary: <
+                        value: "\000\210"
+                        mask: "\000\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16804007
+                        params: <
+                          param_id: 1
+                          value: "\004"
+                        >
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+  >
+  test_case_id: "insert_send_to_cpu"    
+> 
