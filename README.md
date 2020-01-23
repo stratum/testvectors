@@ -24,7 +24,7 @@ There are three other files under the same folder i.e. `PipelineConfig.pb.txt`, 
 
 ### Loopback Mode
 
-In order to support running Test Vectors in [loopback mode](https://github.com/stratum/testvectors-runner/blob/master/docs/loopback.md), it is required to specify each port used in Test Vectors as either ingress or egress to the switch. In addition, extra `Insert*` and `Delete*` Test Vectors are provided as part of loopback mode setup and teardown.
+In order to support running Test Vectors in [loopback mode](https://github.com/stratum/testvectors-runner/blob/master/docs/loopback.md), each port used in Test Vectors should be specified as either ingress or egress to the switch. In addition, extra `Insert*` and `Delete*` Test Vectors are provided as part of loopback mode setup and teardown.
 
 ## Run Test Vectors-based Tests
 
