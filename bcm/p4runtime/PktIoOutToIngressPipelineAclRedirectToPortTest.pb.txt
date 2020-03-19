@@ -24,7 +24,7 @@ test_cases: <
                       field_id: 3
                       ternary: <
                         value: "\010\000"
-                        mask: "\010\000"
+                        mask: "\377\377"
                       >
                     >
                     action: <
@@ -40,6 +40,7 @@ test_cases: <
                 >
               >
             >
+            p4_write_response: <>
           >
         >
       >
@@ -191,7 +192,7 @@ test_cases: <
                       field_id: 3
                       ternary: <
                         value: "\010\000"
-                        mask: "\010\000"
+                        mask: "\377\377"
                       >
                     >
                     action: <
