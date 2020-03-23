@@ -1,0 +1,12 @@
+{
+  "Port1": 1,
+  "Port2": 2,
+  "Packets": [
+    {
+      "Payload": "x"
+    },
+    {
+      "Payload": "y"
+    }
+  ]
+}

@@ -72,7 +72,7 @@ test_cases: <
   expectations: <
     data_plane_expectation: <
       traffic_expectation: <
-        ports: {{ (index $.Ports 0).Decimal }}
+        ports: {{ $.Port1 }}
       >
     >
     expectation_id: "e1"
@@ -80,7 +80,7 @@ test_cases: <
   expectations: <
     data_plane_expectation: <
       traffic_expectation: <
-        ports: {{ (index $.Ports 1).Decimal }}
+        ports: {{ $.Port2 }}
       >
     >
     expectation_id: "e2"
