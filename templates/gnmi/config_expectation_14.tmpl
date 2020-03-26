@@ -1,0 +1,70 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+{{- range .Interfaces }}
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "{{ .name }}"
+            >
+          >
+          elem: <
+            name: "ethernet"
+          >
+          elem: <
+            name: "state"
+          >
+          elem: <
+            name: "port-speed"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1565383493832301000
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "{{ .name }}"
+                >
+              >
+              elem: <
+                name: "ethernet"
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "port-speed"
+              >
+            >
+            val: <
+              string_val: "{{ .portspeed }}"
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "tc1"
+>
+{{- end }}

@@ -1,12 +1,84 @@
 {
-  "Port1": 1,
-  "Port2": 2,
-  "Packets": [
-    {
-      "Payload": "x"
-    },
-    {
-      "Payload": "y"
-    }
-  ]
+	"Port1":1, 
+	"Port2":2, 
+	"Port1_Octal":"\"\\000\\001\"",
+	"Port2_Octal":"\"\\000\\002\"",
+	"CPU_Port_Octal": "\"\\000\\375\"",
+	"Interface2": "veth3",
+	"Interfaces": [
+		{
+			"name": "veth1",
+			"ifindex": 1,
+			"enabled": true,
+			"operstatus": "UP",
+			"adminstatus": "UP",
+			"hardwareport": "",
+			"systemidmac":"0:0:0:0:0:0",
+			"systempriority":0,
+			"macaddress":"11:22:33:44:55:66",
+			"portspeed": "SPEED_10GB",
+			"negotiatedportspeed": "SPEED_10GB",
+			"configforwardingviable": true,
+			"stateforwardingviable": false,
+			"configautonegotiate": false,
+			"stateautonegotiate": false,
+			"confighealthindicator": "GOOD",
+			"statehealthindicator": "UNKNOWN",
+			"inbroadcastpkts": 0,
+			"indiscards": 0,
+			"inerrors": 0,
+			"infcserrors": 0,
+			"inmulticastpkts": 0,
+			"inoctets": 0,
+			"inunicastpkts": 0,
+			"inunknownprotos": 0,
+			"outbroadcastpkts": 0,
+			"outdiscards": 0,
+			"outerrors": 0,
+			"outmulticastpkts": 0,
+			"outoctets": 0,
+			"outunicastpkts": 0
+		},
+		{
+			"name": "veth3",
+			"ifindex": 2,
+			"enabled": true,
+			"operstatus": "UP",
+			"adminstatus": "UP",
+			"hardwareport": "",
+			"systemidmac": "0:0:0:0:0:0",
+			"systempriority": 0,
+			"macaddress": "11:22:33:44:55:66",
+			"portspeed": "SPEED_10GB",
+			"negotiatedportspeed": "SPEED_10GB",
+			"configforwardingviable": true,
+			"stateforwardingviable": false,
+			"configautonegotiate": false,
+			"stateautonegotiate": false,
+			"confighealthindicator": "GOOD",
+			"statehealthindicator": "UNKNOWN",
+			"inbroadcastpkts": 0,
+			"indiscards": 0,
+			"inerrors": 0,
+			"infcserrors": 0,
+			"inmulticastpkts": 0,
+			"inoctets": 0,
+			"inunicastpkts": 0,
+			"inunknownprotos": 0,
+			"outbroadcastpkts": 0,
+			"outdiscards": 0,
+			"outerrors": 0,
+			"outmulticastpkts": 0,
+			"outoctets": 0,
+			"outunicastpkts": 0
+		}
+	],
+	"Packets": [
+	  {
+		"Payload": "x"
+	  },
+	  {
+		"Payload": "y"
+	  }
+	]
 }

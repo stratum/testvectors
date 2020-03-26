@@ -19,7 +19,7 @@ test_cases: <
                 entity: <
                   table_entry: <
                     table_id: 33573106
-                    priority: 10
+                    priority: 1
                     match: <
                       field_id: 1
                       ternary: <
@@ -36,7 +36,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
@@ -58,7 +57,7 @@ test_cases: <
                       action_id: 16782370
                       params: <
                         param_id: 1
-                        value: "{{ (index $.Ports 1).Octal }}"
+                        value: {{ $.Port2_Octal }}
                       >
                       params: <
                         param_id: 2
@@ -77,7 +76,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
@@ -115,7 +113,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
@@ -127,16 +124,12 @@ test_cases: <
   action_groups: <
     sequential_action_group: <
       actions: <
-        control_plane_operation: <
-          packet_out_operation: <
-            p4_packet_out: <
+        data_plane_stimulus: <
+          traffic_stimulus: <
+            packets: <
               payload: "\x00\x00\x00\xaa\xaa\xaa\x3c\xfd\xfe\xa8\xea\x30\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x40\x00\x66\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
-              metadata: <
-                metadata_id: 1
-                value: "\000\015"
-              >
             >
-            num_of_packets: 1
+            port: {{ $.Port1 }}
           >
         >
       >
@@ -149,7 +142,7 @@ test_cases: <
         packets: <
           payload: "\x3c\xfd\xfe\xa8\xea\x31\x00\x00\x00\xbb\xbb\xbb\x08\x00\x45\x00\x00\x2e\x00\x01\x00\x00\x3f\x00\x67\xcb\x0a\x01\x00\x01\x0a\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0a\x0b\x0c\x0d\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
         >
-        ports: {{ (index $.Ports 1).Decimal }}
+        ports: {{ $.Port2 }}
       >
     >
     expectation_id: "e1"
@@ -157,12 +150,12 @@ test_cases: <
   expectations: <
     data_plane_expectation: <
       traffic_expectation: <
-        ports: {{ (index $.Ports 0).Decimal }}
+        ports: {{ $.Port1 }}
       >
     >
     expectation_id: "e2"
   >
-  test_case_id: "packetout_len_78_ttl_64_port_loopback"
+  test_case_id: "packet_len_78_ttl_64_port_1"
 >
 test_cases: <
   action_groups: <
@@ -201,7 +194,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
@@ -223,7 +215,7 @@ test_cases: <
                       action_id: 16782370
                       params: <
                         param_id: 1
-                        value: "{{ (index $.Ports 1).Octal }}"
+                        value: {{ $.Port2_Octal }}
                       >
                       params: <
                         param_id: 2
@@ -242,7 +234,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
@@ -259,7 +250,7 @@ test_cases: <
                 entity: <
                   table_entry: <
                     table_id: 33573106
-                    priority: 10
+                    priority: 1
                     match: <
                       field_id: 1
                       ternary: <
@@ -276,7 +267,6 @@ test_cases: <
                 >
               >
             >
-            p4_write_response: <>
           >
         >
       >
