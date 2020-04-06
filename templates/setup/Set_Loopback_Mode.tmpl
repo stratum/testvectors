@@ -1,0 +1,122 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        config_operation: <
+          gnmi_set_request: <
+                update: <     
+                  path: <
+                    elem: <
+                      name: "interfaces"
+                    >
+                    elem: <
+                      name: "interface"
+                        key: <
+                          key: "name"
+                          value: "{{ $.Interface1 }}"
+                        >
+                    >
+                    elem: <
+                      name: "config"
+                    >
+                    elem: <
+                      name: "loopback-mode"
+                    >
+                  >
+                  val: <
+                    bool_val: true
+                  >
+                >
+          >
+          gnmi_set_response: <
+                prefix: <
+                >
+                response: <
+                  path: <
+                    elem: <
+                      name: "interfaces"
+                    >
+                    elem: <
+                      name: "interface"
+                      key: <
+                        key: "name"
+                        value: "{{ $.Interface1 }}"
+                      >
+                    >
+                    elem: <
+                      name: "config"
+                    >
+                    elem: <
+                      name: "loopback-mode"
+                    >
+                  >
+                  op: UPDATE
+                >
+                timestamp: 1566581164386340787
+          >
+        >
+      >
+      actions: <
+        config_operation: <
+          gnmi_set_request: <
+                update: <     
+                  path: <
+                    elem: <
+                      name: "interfaces"
+                    >
+                    elem: <
+                      name: "interface"
+                        key: <
+                          key: "name"
+                          value: "{{ $.Interface2 }}"
+                        >
+                    >
+                    elem: <
+                      name: "config"
+                    >
+                    elem: <
+                      name: "loopback-mode"
+                    >
+                  >
+                  val: <
+                    bool_val: true
+                  >
+                >
+          >
+          gnmi_set_response: <
+                prefix: <
+                >
+                response: <
+                  path: <
+                    elem: <
+                      name: "interfaces"
+                    >
+                    elem: <
+                      name: "interface"
+                      key: <
+                        key: "name"
+                        value: "{{ $.Interface2 }}"
+                      >
+                    >
+                    elem: <
+                      name: "config"
+                    >
+                    elem: <
+                      name: "loopback-mode"
+                    >
+                  >
+                  op: UPDATE
+                >
+                timestamp: 1566581164386340787
+          >
+        >
+      >
+    >
+  >
+  test_case_id: "set-loopback"
+>
