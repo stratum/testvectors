@@ -57,7 +57,7 @@ test_cases: <
                       action_id: 16782370
                       params: <
                         param_id: 1
-                        value: {{ $.Port2_Octal }}
+                        value: {{ .Port2_Octal }}
                       >
                       params: <
                         param_id: 2
@@ -160,7 +160,7 @@ test_cases: <
           actions: <
             data_plane_stimulus: <
               traffic_stimulus: <
-                port: {{ $.Port1 }}
+                port: {{ .Port1 }}
                 packets: <
                   payload: "\000\000\000\252\252\252<\375\376\250\3520\010\000E\000\000.\000\001\000\000@\000f\313\n\001\000\001\n\002\000\001\000\001\002\003\004\005\006\007\010\t\n\013\014\r\016\017\020\021\022\023\024\025\026\027\030\031"
                 >
@@ -238,7 +238,7 @@ test_cases: <
   expectations: <
     data_plane_expectation: <
       traffic_expectation: <
-        ports: {{ $.Port2 }}
+        ports: {{ .Port2 }}
         packets: <
           payload: "<\375\376\250\3521\000\000\000\273\273\273\010\000E\000\000.\000\001\000\000?\000g\313\n\001\000\001\n\002\000\001\000\001\002\003\004\005\006\007\010\t\n\013\014\r\016\017\020\021\022\023\024\025\026\027\030\031"
         >
@@ -305,7 +305,7 @@ test_cases: <
                       action_id: 16782370
                       params: <
                         param_id: 1
-                        value: {{ $.Port2_Octal }}
+                        value: {{ .Port2_Octal }}
                       >
                       params: <
                         param_id: 2

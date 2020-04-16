@@ -72,13 +72,5 @@
 			"outoctets": 0,
 			"outunicastpkts": 0
 		}
-	],
-	"Packets": [
-	  {
-		"Payload": "x"
-	  },
-	  {
-		"Payload": "y"
-	  }
 	]
 }
