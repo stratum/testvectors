@@ -6,10 +6,10 @@
 entries: <
   port_number: 58
   interface_name: "ens6f0"
-  port_type: 0
+  port_type: 1
 >
 entries: <
   port_number: 62
   interface_name: "ens6f1"
-  port_type: 0
+  port_type: 2
 >
