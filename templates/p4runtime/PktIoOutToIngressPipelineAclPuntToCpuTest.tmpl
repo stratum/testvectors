@@ -1,0 +1,146 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: INSERT
+                entity: <
+                  table_entry: <
+                    table_id: 33598026
+                    priority: 10
+                    match: <
+                      field_id: 3
+                      ternary: <
+                        value: "\010\000"
+                        mask: "\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16804007
+                        params: <
+                          param_id: 1
+                          value: "\004"
+                        >
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+  >
+  test_case_id: "insert_write"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          packet_out_operation: <
+            p4_packet_out: <
+              payload: "\x3C\xFD\xFE\xA8\xEA\x31\x00\x00\x00\xC0\x1A\x10\x08\x00\x45\x00\x00\x2E\x00\x01\x00\x00\x40\x00\x66\xCB\x0A\x01\x00\x01\x0A\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+              metadata: <
+                metadata_id: 1
+                value: "\000\000"
+              >
+            >
+            num_of_packets: 1
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: {{ .Port1 }}
+      >
+    >
+    expectation_id: "e1"
+  >
+  expectations: <
+    data_plane_expectation: <
+      traffic_expectation: <
+        ports: {{ .Port2 }}
+      >
+    >
+    expectation_id: "e2"
+  >
+  expectations: <
+    control_plane_expectation: <
+      packet_in_expectation: <
+        p4_packet_in: <
+          payload: "\x3C\xFD\xFE\xA8\xEA\x31\x00\x00\x00\xC0\x1A\x10\x08\x00\x45\x00\x00\x2E\x00\x01\x00\x00\x40\x00\x66\xCB\x0A\x01\x00\x01\x0A\x02\x00\x01\x00\x01\x02\x03\x04\x05\x06\x07\x08\x09\x0A\x0B\x0C\x0D\x0E\x0F\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c\x1d\x1e\x1f\x20\x21\x22\x23\x24\x25\x26\x27\x28\x29\x2a\x2b"
+          metadata: <
+              metadata_id: 1
+              value: {{ .CPU_Port_Octal  }}
+          >
+        >
+      >
+    >
+    expectation_id: "e3"
+  >
+  test_case_id: "packetout_len_78_ttl_64_port_0"
+>
+test_cases: <
+  action_groups: <
+    sequential_action_group: <
+      actions: <
+        control_plane_operation: <
+          write_operation: <
+            p4_write_request: <
+              device_id: 1
+              election_id: <
+                low: 4
+              >
+              updates: <
+                type: DELETE
+                entity: <
+                  table_entry: <
+                    table_id: 33598026
+                    priority: 10
+                    match: <
+                      field_id: 3
+                      ternary: <
+                        value: "\010\000"
+                        mask: "\377\377"
+                      >
+                    >
+                    action: <
+                      action: <
+                        action_id: 16804007
+                        params: <
+                          param_id: 1
+                          value: "\004"
+                        >
+                      >
+                    >
+                  >
+                >
+              >
+            >
+          >
+        >
+      >
+    >
+    action_group_id: "ag1"
+  >
+  test_case_id: "delete_write"
+>

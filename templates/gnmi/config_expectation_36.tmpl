@@ -1,0 +1,64 @@
+#
+# Copyright 2019-present Open Networking Foundation
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+{{- range .Interfaces }}
+test_cases: <
+  expectations: <
+    config_expectation: <
+      gnmi_get_request: <
+        path: <
+          elem: <
+            name: "interfaces"
+          >
+          elem: <
+            name: "interface"
+            key: <
+              key: "name"
+              value: "{{ .name }}"
+            >
+          >
+          elem: <
+            name: "state"
+          >
+          elem: <
+            name: "health-indicator"
+          >
+        >
+        encoding: PROTO
+      >
+      gnmi_get_response: <
+        notification: <
+          timestamp: 1565383812363436200
+          update: <
+            path: <
+              elem: <
+                name: "interfaces"
+              >
+              elem: <
+                name: "interface"
+                key: <
+                  key: "name"
+                  value: "{{ .name }}"
+                >
+              >
+              elem: <
+                name: "state"
+              >
+              elem: <
+                name: "health-indicator"
+              >
+            >
+            val: <
+              string_val: "{{ .statehealthindicator }}"
+            >
+          >
+        >
+      >
+    >
+    expectation_id: "e1"
+  >
+  test_case_id: "tc1"
+>
+{{- end}}
