@@ -5,6 +5,9 @@
  */
 syntax = "proto3";
 package stratum.testing;
+
+option go_package="github.com/stratum/testvectors/proto/target";
+
 message Credentials {
     string username = 1;
     string password = 2;
