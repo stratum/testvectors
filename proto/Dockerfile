@@ -13,7 +13,7 @@ RUN go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN git clone --branch master https://github.com/googleapis/googleapis /go/src/github.com/googleapis/googleapis
 RUN git clone --branch master https://github.com/openconfig/gnmi /go/src/github.com/openconfig/gnmi
-RUN git clone --branch master https://github.com/abhilashendurthi/p4runtime /go/src/github.com/abhilashendurthi/p4runtime
+RUN git clone --branch master https://github.com/p4lang/p4runtime /go/src/github.com/p4lang/p4runtime
 
 WORKDIR /root
 

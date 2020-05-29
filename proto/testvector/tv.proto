@@ -14,8 +14,8 @@ option cc_generic_services = false;
 
 package stratum.testing;
 
-import "github.com/abhilashendurthi/p4runtime/proto/p4/v1/p4runtime.proto";
-import "github.com/openconfig/gnmi/proto/gnmi/gnmi.proto";
+import "p4/v1/p4runtime.proto";
+import "gnmi/gnmi.proto";
 
 //////////////////////////////////////////////
 // P4Runtime related messaged
