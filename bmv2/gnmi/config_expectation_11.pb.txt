@@ -56,7 +56,7 @@ test_cases: <
               >
             >
             val: <
-              string_val: "11:22:33:44:55:66"
+              string_val: "0:0:0:0:0:0"
             >
           >
         >
