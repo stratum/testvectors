@@ -89,12 +89,12 @@ FROM bitnami/minideb:stretch
 ENV RUNTIME_DEPS \
     make \
     net-tools \
-	python \
-	python-setuptools 
+    python \
+    python-setuptools
 
 RUN install_packages $RUNTIME_DEPS
 
-COPY --from=proto-deps /output /output
+COPY --from=proto-deps /output /usr/lib/python2.7/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
 
