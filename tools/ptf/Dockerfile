@@ -50,7 +50,11 @@ RUN git clone https://github.com/stratum/testvectors /tmp/github.com/stratum/tes
 WORKDIR /tmp/github.com/stratum/testvectors/proto
 RUN git pull
 RUN python -m grpc_tools.protoc -I=.:/tmp/github.com/openconfig/gnmi/proto:/tmp/github.com/p4lang/p4runtime/proto:/tmp/github.com/googleapis/googleapis --python_out=/output testvector/tv.proto
+RUN python -m grpc_tools.protoc -I=. --python_out=/output target/target.proto
+RUN python -m grpc_tools.protoc -I=. --python_out=/output portmap/portmap.proto
 RUN cp /tmp/github.com/stratum/testvectors/utils/python/tvutils.py /output/testvector/tvutils.py
+RUN cp /tmp/github.com/stratum/testvectors/utils/python/pmutils.py /output/portmap/pmutils.py
+RUN cp /tmp/github.com/stratum/testvectors/utils/python/targetutils.py /output/target/targetutils.py
 
 RUN touch /output/gnmi_ext/__init__.py
 RUN touch /output/gnmi/__init__.py
@@ -62,6 +66,8 @@ RUN touch /output/p4/config/__init__.py
 RUN touch /output/p4/config/v1/__init__.py
 RUN touch /output/p4/v1/__init__.py
 RUN touch /output/testvector/__init__.py
+RUN touch /output/target/__init__.py
+RUN touch /output/portmap/__init__.py
 
 FROM bitnami/minideb:stretch as ptf-deps
 
