@@ -2,6 +2,8 @@
 # SPDX-License-Identifier: Apache-2.0
 
 from testvector import tv_pb2
+import os, errno
+import google.protobuf.text_format
 
 
 def get_new_testvector():
@@ -54,3 +56,30 @@ def add_pipeline_config_operation(testcase, req, resp=None):
 	action.control_plane_operation.pipeline_config_operation.p4_set_pipeline_config_request.CopyFrom(req)
 	if resp is not None:
 		action.control_plane_operation.pipeline_config_operation.p4_set_pipeline_config_response.CopyFrom(resp)
+
+# Writes given testvector to file under <directory>/testvectors directory
+# If create_tv_sub_dir=False, then file is created under <directory> directory
+def write_to_file(tv, directory, file_name, create_tv_sub_dir=True):
+	if create_tv_sub_dir:
+		directory = os.path.join(directory,"testvectors")
+	if not file_name.endswith(".pb.txt"):
+		file_name = file_name + ".pb.txt"
+	if not os.path.exists(directory):
+		try:
+			os.makedirs(directory)
+		except OSError as e:
+			if e.errno != errno.EEXIST:
+				raise
+	abs_file_name = os.path.join(directory, file_name)
+	with open(abs_file_name, "w") as f:
+		f.write(google.protobuf.text_format.MessageToString(tv))
+
+# Writes given list of testvectors to files under <base_dir>/testvectors/<base_file_name> directory
+# If create_tv_sub_dir=False, then file is created under <base_dir>/<base_file_name> directory
+def write_tv_list_to_files(tv_list, base_dir, base_file_name, create_tv_sub_dir=True):
+	if create_tv_sub_dir:
+		directory = os.path.join(base_dir,"testvectors")
+	directory = os.path.join(directory,base_file_name)
+	for i in range(len(tv_list)):
+		file_name = base_file_name + str(i)
+		write_to_file(tv_list[i], directory, file_name, create_tv_sub_dir=False)
