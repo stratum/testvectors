@@ -96,7 +96,8 @@ ENV RUNTIME_DEPS \
     make \
     net-tools \
     python \
-    python-setuptools
+    python-setuptools \
+    iproute2
 
 RUN install_packages $RUNTIME_DEPS
 
