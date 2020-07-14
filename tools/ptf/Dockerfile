@@ -92,12 +92,15 @@ RUN pip install --no-cache-dir --root /python_output $PIP_DEPS
 
 FROM bitnami/minideb:stretch
 
+#FIXME: Remove tcpdump, netbase after removing ptf
 ENV RUNTIME_DEPS \
     make \
     net-tools \
     python \
     python-setuptools \
-    iproute2
+    iproute2 \
+    tcpdump \
+    netbase
 
 RUN install_packages $RUNTIME_DEPS
 
