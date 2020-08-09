@@ -62,8 +62,11 @@
     <div id="container"></div>
 
     <script>
+        var data = JSON.parse({{ . }});
         // The JSObject that you want to render
-        var data = {{ . }}
+        // var fs = require('fs');
+        // var json = JSON.parse(fs.readFileSync('test_tv.json').toString());
+        // import * as data from './test_tv.json';
         // var data = {
         //     hello: [1, 2, 3, 4],
         //     there: {

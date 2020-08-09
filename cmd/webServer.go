@@ -1,11 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"io/ioutil"
 
+	"html/template"
 	"net/http"
-	"text/template"
 
 	protov1 "github.com/golang/protobuf/proto"
 	"github.com/stratum/testvectors/proto/testvector"
@@ -19,15 +18,14 @@ type TestvectorPageData struct {
 func main() {
 	tv, _ := getTVFromFile("bmv2/p4runtime/L3ForwardTest.pb.txt")
 	json := protojson.MarshalOptions{Multiline: true}
-	fmt.Print(json.Format(tv))
+	// fmt.Print(json.Format(tv))
 	// sb, _ := json.Marshal(tv)
-	sb := protojson.Format(tv)
-	tmpl := template.Must(template.ParseFiles("tools/ui/index.html"))
+	// ioutil.WriteFile("data.json", sb, 0644)
+
+	tmpl := template.Must(template.ParseFiles("tools/ui/index.gohtml"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		// data := TestvectorPageData{
-		// 	Data: string(sb),
-		// }
-		tmpl.Execute(w, sb)
+
+		tmpl.Execute(w, json.Format(tv))
 	})
 	http.ListenAndServe(":8080", nil)
 
