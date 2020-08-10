@@ -11,21 +11,14 @@ import (
 	"google.golang.org/protobuf/encoding/protojson"
 )
 
-type TestvectorPageData struct {
-	Data string
-}
-
 func main() {
 	tv, _ := getTVFromFile("bmv2/p4runtime/L3ForwardTest.pb.txt")
 	json := protojson.MarshalOptions{Multiline: true}
-	// fmt.Print(json.Format(tv))
-	// sb, _ := json.Marshal(tv)
-	// ioutil.WriteFile("data.json", sb, 0644)
+	sb, _ := json.Marshal(tv)
 
 	tmpl := template.Must(template.ParseFiles("tools/ui/index.gohtml"))
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-
-		tmpl.Execute(w, json.Format(tv))
+		tmpl.Execute(w, string(sb))
 	})
 	http.ListenAndServe(":8080", nil)
 

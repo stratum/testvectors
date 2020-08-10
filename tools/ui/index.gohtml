@@ -63,19 +63,6 @@
 
     <script>
         var data = JSON.parse({{ . }});
-        // The JSObject that you want to render
-        // var fs = require('fs');
-        // var json = JSON.parse(fs.readFileSync('test_tv.json').toString());
-        // import * as data from './test_tv.json';
-        // var data = {
-        //     hello: [1, 2, 3, 4],
-        //     there: {
-        //         a: 1,
-        //         b: 2,
-        //         c: ["hello", null]
-        //     }
-        // };
-
         // Render toggable list in the container element
         document.getElementById("container").appendChild(
             renderjson(data)
