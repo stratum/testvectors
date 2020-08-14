@@ -24,7 +24,10 @@ def add_write_operation(testcase, req,resp=None):
 
 def add_read_expectation(testcase, req, resp=None):
 	expectation = testcase.expectations.add()
-	expectation.control_plane_expectation.read_operation.p4_read_request.CopyFrom(req)
+	expectation.control_plane_expectation.read_expectation.p4_read_request.CopyFrom(req)
+	if resp is not None:
+		for r in resp:
+			expectation.control_plane_expectation.read_expectation.p4_read_responses.add().CopyFrom(r)
 
 def add_traffic_stimulus(testcase, port, pkt):
 	action_group=testcase.action_groups.add()
