@@ -8,7 +8,7 @@
 ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
 
-FROM python:2.7.13 as proto-deps
+FROM python:3.5 as proto-deps
 
 ARG GRPC_VER
 
@@ -75,19 +75,19 @@ ARG GRPC_VER
 ARG PROTOBUF_VER
 
 ENV RUNTIME_DEPS \
-	python \
-	python-pip \
-	python-setuptools \
+	python3 \
+	python3-pip \
+	python3-setuptools \
     git
 
 ENV PIP_DEPS \
-    git+https://github.com/p4lang/scapy-vxlan \
     git+https://github.com/p4lang/ptf \
     protobuf==$PROTOBUF_VER \
-    grpcio==$GRPC_VER
+    grpcio==$GRPC_VER \
+    scapy
 
 RUN install_packages $RUNTIME_DEPS
-RUN pip install --no-cache-dir --root /python_output $PIP_DEPS
+RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
 
 
 FROM bitnami/minideb:stretch
@@ -96,15 +96,15 @@ FROM bitnami/minideb:stretch
 ENV RUNTIME_DEPS \
     make \
     net-tools \
-    python \
-    python-setuptools \
+    python3 \
+    python3-setuptools \
     iproute2 \
     tcpdump \
     netbase
 
 RUN install_packages $RUNTIME_DEPS
 
-COPY --from=proto-deps /output /usr/lib/python2.7/dist-packages
+COPY --from=proto-deps /output /usr/lib/python3.5/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
 
