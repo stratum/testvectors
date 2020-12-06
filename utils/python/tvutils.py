@@ -33,13 +33,13 @@ def add_traffic_stimulus(testcase, port, pkt):
 	action_group=testcase.action_groups.add()
 	action=action_group.sequential_action_group.actions.add()
 	packet = action.data_plane_stimulus.traffic_stimulus.packets.add()
-	packet.payload = str(pkt)
+	packet.payload = bytes(pkt)
 	action.data_plane_stimulus.traffic_stimulus.port=port
 
 def add_traffic_expectation(testcase, ports, pkt):
 	expectation = testcase.expectations.add()
 	packet = expectation.data_plane_expectation.traffic_expectation.packets.add()
-	packet.payload = str(pkt)
+	packet.payload = bytes(pkt)
 	for port in ports:
 		expectation.data_plane_expectation.traffic_expectation.ports.append(port)
 
