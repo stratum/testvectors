@@ -7,6 +7,7 @@
 
 ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
+ARG SCAPY_VER=2.4.3
 
 FROM python:3.5 as proto-deps
 
@@ -72,6 +73,7 @@ FROM bitnami/minideb:stretch as ptf-deps
 
 ARG GRPC_VER
 ARG PROTOBUF_VER
+ARG SCAPY_VER
 
 ENV RUNTIME_DEPS \
 	python3 \
@@ -83,7 +85,7 @@ ENV PIP_DEPS \
     git+https://github.com/p4lang/ptf \
     protobuf==$PROTOBUF_VER \
     grpcio==$GRPC_VER \
-    scapy
+    scapy==$SCAPY_VER
 
 RUN install_packages $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
