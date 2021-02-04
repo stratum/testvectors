@@ -9,7 +9,7 @@ ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
 ARG SCAPY_VER=2.4.3
 
-FROM python:3.5 as proto-deps
+FROM python:3.8 as proto-deps
 
 ARG GRPC_VER
 
@@ -69,7 +69,7 @@ RUN touch /output/testvector/__init__.py
 RUN touch /output/target/__init__.py
 RUN touch /output/portmap/__init__.py
 
-FROM bitnami/minideb:stretch as ptf-deps
+FROM ubuntu:20.04 as ptf-deps
 
 ARG GRPC_VER
 ARG PROTOBUF_VER
@@ -87,11 +87,11 @@ ENV PIP_DEPS \
     grpcio==$GRPC_VER \
     scapy==$SCAPY_VER
 
-RUN install_packages $RUNTIME_DEPS
+RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
 
 
-FROM bitnami/minideb:stretch
+FROM ubuntu:20.04
 
 #FIXME: Remove tcpdump, netbase after removing ptf
 ENV RUNTIME_DEPS \
@@ -103,9 +103,9 @@ ENV RUNTIME_DEPS \
     tcpdump \
     netbase
 
-RUN install_packages $RUNTIME_DEPS
+RUN apt update && apt install -y $RUNTIME_DEPS
 
-COPY --from=proto-deps /output /usr/lib/python3.5/dist-packages
+COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
 
