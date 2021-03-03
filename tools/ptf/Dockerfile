@@ -7,8 +7,9 @@
 
 ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
+ARG SCAPY_VER=2.4.3
 
-FROM python:2.7.13 as proto-deps
+FROM python:3.8 as proto-deps
 
 ARG GRPC_VER
 
@@ -46,9 +47,8 @@ ENV PROTOS="\
 RUN python -m grpc_tools.protoc -I=/tmp/github.com/p4lang/p4runtime/proto:/tmp/github.com/googleapis/googleapis --python_out=/output --grpc_python_out=/output $PROTOS
 
 RUN echo "Building testvector proto"
-RUN git clone https://github.com/stratum/testvectors /tmp/github.com/stratum/testvectors
+COPY . /tmp/github.com/stratum/testvectors
 WORKDIR /tmp/github.com/stratum/testvectors/proto
-RUN git pull
 RUN python -m grpc_tools.protoc -I=.:/tmp/github.com/openconfig/gnmi/proto:/tmp/github.com/p4lang/p4runtime/proto:/tmp/github.com/googleapis/googleapis --python_out=/output testvector/tv.proto
 RUN python -m grpc_tools.protoc -I=. --python_out=/output target/target.proto
 RUN python -m grpc_tools.protoc -I=. --python_out=/output portmap/portmap.proto
@@ -69,42 +69,43 @@ RUN touch /output/testvector/__init__.py
 RUN touch /output/target/__init__.py
 RUN touch /output/portmap/__init__.py
 
-FROM bitnami/minideb:stretch as ptf-deps
+FROM ubuntu:20.04 as ptf-deps
 
 ARG GRPC_VER
 ARG PROTOBUF_VER
+ARG SCAPY_VER
 
 ENV RUNTIME_DEPS \
-	python \
-	python-pip \
-	python-setuptools \
+	python3 \
+	python3-pip \
+	python3-setuptools \
     git
 
 ENV PIP_DEPS \
-    git+https://github.com/p4lang/scapy-vxlan \
     git+https://github.com/p4lang/ptf \
     protobuf==$PROTOBUF_VER \
-    grpcio==$GRPC_VER
+    grpcio==$GRPC_VER \
+    scapy==$SCAPY_VER
 
-RUN install_packages $RUNTIME_DEPS
-RUN pip install --no-cache-dir --root /python_output $PIP_DEPS
+RUN apt update && apt install -y $RUNTIME_DEPS
+RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
 
 
-FROM bitnami/minideb:stretch
+FROM ubuntu:20.04
 
 #FIXME: Remove tcpdump, netbase after removing ptf
 ENV RUNTIME_DEPS \
     make \
     net-tools \
-    python \
-    python-setuptools \
+    python3 \
+    python3-setuptools \
     iproute2 \
     tcpdump \
     netbase
 
-RUN install_packages $RUNTIME_DEPS
+RUN apt update && apt install -y $RUNTIME_DEPS
 
-COPY --from=proto-deps /output /usr/lib/python2.7/dist-packages
+COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
 
