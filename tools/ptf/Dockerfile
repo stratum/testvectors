@@ -8,6 +8,7 @@
 ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
 ARG SCAPY_VER=2.4.3
+ARG P4RUNTIME_SHELL_VER=0.0.1
 
 FROM python:3.8 as proto-deps
 
@@ -74,6 +75,7 @@ FROM ubuntu:20.04 as ptf-deps
 ARG GRPC_VER
 ARG PROTOBUF_VER
 ARG SCAPY_VER
+ARG P4RUNTIME_SHELL_VER
 
 ENV RUNTIME_DEPS \
 	python3 \
@@ -85,7 +87,8 @@ ENV PIP_DEPS \
     git+https://github.com/p4lang/ptf \
     protobuf==$PROTOBUF_VER \
     grpcio==$GRPC_VER \
-    scapy==$SCAPY_VER
+    scapy==$SCAPY_VER \
+    p4runtime-shell==$P4RUNTIME_SHELL_VER
 
 RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
