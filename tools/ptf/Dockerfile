@@ -85,7 +85,8 @@ ENV PIP_DEPS \
     git+https://github.com/p4lang/ptf \
     protobuf==$PROTOBUF_VER \
     grpcio==$GRPC_VER \
-    scapy==$SCAPY_VER
+    scapy==$SCAPY_VER \
+    p4runtime-shell==0.0.1
 
 RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
