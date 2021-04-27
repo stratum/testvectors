@@ -7,7 +7,8 @@
 
 ARG GRPC_VER=1.26
 ARG PROTOBUF_VER=3.12
-ARG SCAPY_VER=2.4.3
+ARG SCAPY_VER=2.4.5
+ARG PTF_VER=f8b201918263d2e292e6ec3f40638ede618715bd
 ARG P4RUNTIME_SHELL_VER=0.0.1
 
 FROM python:3.8 as proto-deps
@@ -75,6 +76,7 @@ FROM ubuntu:20.04 as ptf-deps
 ARG GRPC_VER
 ARG PROTOBUF_VER
 ARG SCAPY_VER
+ARG PTF_VER
 ARG P4RUNTIME_SHELL_VER
 
 ENV RUNTIME_DEPS \
@@ -84,7 +86,7 @@ ENV RUNTIME_DEPS \
     git
 
 ENV PIP_DEPS \
-    git+https://github.com/p4lang/ptf \
+    git+https://github.com/p4lang/ptf@$PTF_VER \
     protobuf==$PROTOBUF_VER \
     grpcio==$GRPC_VER \
     scapy==$SCAPY_VER \
