@@ -99,7 +99,7 @@ RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
 
 # Install TRex deps
-FROM alpine:3.12.1 as builder
+FROM alpine:3.12.1 as trex-builder
 ARG TREX_VER
 ARG TREX_EXT_LIBS
 ARG TREX_LIBS
@@ -138,7 +138,7 @@ RUN pip3 install scipy==1.5.4 numpy==1.19.4 matplotlib==3.3.3
 
 ENV TREX_EXT_LIBS=${TREX_EXT_LIBS}
 ENV PYTHONPATH=/workspace/trex-scripts:${TREX_EXT_LIBS}:${TREX_LIBS}
-COPY --from=builder /output /
+COPY --from=trex-builder /output /
 COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
