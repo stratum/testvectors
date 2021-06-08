@@ -143,5 +143,4 @@ COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
 
-WORKDIR /workspace
-ENTRYPOINT [ "dumb-init", "python3", "-m", "control" ]
+ENTRYPOINT []
