@@ -10,6 +10,9 @@ ARG PROTOBUF_VER=3.12
 ARG SCAPY_VER=2.4.5
 ARG PTF_VER=f8b201918263d2e292e6ec3f40638ede618715bd
 ARG P4RUNTIME_SHELL_VER=0.0.1
+ARG TREX_VER=2.85
+ARG TREX_EXT_LIBS=/external_libs
+ARG TREX_LIBS=/trex_python
 
 FROM python:3.8 as proto-deps
 
@@ -95,8 +98,26 @@ ENV PIP_DEPS \
 RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install --no-cache-dir --root /python_output $PIP_DEPS
 
+# Install TRex deps
+FROM alpine:3.12.1 as trex-builder
+ARG TREX_VER
+ARG TREX_EXT_LIBS
+ARG TREX_LIBS
+# Install Trex library
+ENV TREX_SCRIPT_DIR=/trex-core-${TREX_VER}/scripts
+# RUN apt update && apt install -y wget
+RUN wget https://github.com/cisco-system-traffic-generator/trex-core/archive/v${TREX_VER}.tar.gz
+RUN tar xf v${TREX_VER}.tar.gz && \
+    mkdir -p /output/${TREX_EXT_LIBS} && \
+    mkdir -p /output/${TREX_LIBS} && \
+    cp -r ${TREX_SCRIPT_DIR}/automation/trex_control_plane/interactive/* /output/${TREX_LIBS} && \
+    cp -r ${TREX_SCRIPT_DIR}/external_libs/* /output/${TREX_EXT_LIBS} && \
+    cp -r ${TREX_SCRIPT_DIR}/automation/trex_control_plane/stf/trex_stf_lib /output/${TREX_LIBS}
 
 FROM ubuntu:20.04
+
+ARG TREX_EXT_LIBS
+ARG TREX_LIBS
 
 #FIXME: Remove tcpdump, netbase after removing ptf
 ENV RUNTIME_DEPS \
@@ -106,10 +127,18 @@ ENV RUNTIME_DEPS \
     python3-setuptools \
     iproute2 \
     tcpdump \
+    dumb-init \
+    python3-dev \
+    build-essential \
+    python3-pip \
     netbase
 
 RUN apt update && apt install -y $RUNTIME_DEPS
+RUN pip3 install scipy==1.5.4 numpy==1.19.4 matplotlib==3.3.3
 
+ENV TREX_EXT_LIBS=${TREX_EXT_LIBS}
+ENV PYTHONPATH=/workspace/trex-scripts:${TREX_EXT_LIBS}:${TREX_LIBS}
+COPY --from=trex-builder /output /
 COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
 RUN ldconfig
