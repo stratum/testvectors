@@ -10,7 +10,7 @@ ARG PROTOBUF_VER=3.12
 ARG SCAPY_VER=2.4.5
 ARG PTF_VER=f8b201918263d2e292e6ec3f40638ede618715bd
 ARG P4RUNTIME_SHELL_VER=0.0.1
-ARG TREX_VER=2.85
+ARG TREX_VER=2.85-scapy-2.4.5
 ARG TREX_EXT_LIBS=/external_libs
 ARG TREX_LIBS=/trex_python
 
@@ -106,7 +106,7 @@ ARG TREX_LIBS
 # Install Trex library
 ENV TREX_SCRIPT_DIR=/trex-core-${TREX_VER}/scripts
 # RUN apt update && apt install -y wget
-RUN wget https://github.com/cisco-system-traffic-generator/trex-core/archive/v${TREX_VER}.tar.gz
+RUN wget https://github.com/stratum/trex-core/archive/refs/tags/v${TREX_VER}.tar.gz
 RUN tar xf v${TREX_VER}.tar.gz && \
     mkdir -p /output/${TREX_EXT_LIBS} && \
     mkdir -p /output/${TREX_LIBS} && \
@@ -137,7 +137,7 @@ RUN apt update && apt install -y $RUNTIME_DEPS
 RUN pip3 install scipy==1.5.4 numpy==1.19.4 matplotlib==3.3.3
 
 ENV TREX_EXT_LIBS=${TREX_EXT_LIBS}
-ENV PYTHONPATH=/workspace/trex-scripts:${TREX_EXT_LIBS}:${TREX_LIBS}
+ENV PYTHONPATH=${TREX_EXT_LIBS}:${TREX_LIBS}
 COPY --from=trex-builder /output /
 COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
