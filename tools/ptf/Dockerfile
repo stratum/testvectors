@@ -10,7 +10,7 @@ ARG PROTOBUF_VER=3.12
 ARG SCAPY_VER=2.4.5
 ARG PTF_VER=f8b201918263d2e292e6ec3f40638ede618715bd
 ARG P4RUNTIME_SHELL_VER=0.0.1
-ARG TREX_VER=2.85-scapy-2.4.5
+ARG TREX_VER=3b19ddcf67e33934f268b09d3364cd87275d48db
 ARG TREX_EXT_LIBS=/external_libs
 ARG TREX_LIBS=/trex_python
 
@@ -92,7 +92,6 @@ ENV PIP_DEPS \
     git+https://github.com/p4lang/ptf@$PTF_VER \
     protobuf==$PROTOBUF_VER \
     grpcio==$GRPC_VER \
-    scapy==$SCAPY_VER \
     p4runtime-shell==$P4RUNTIME_SHELL_VER
 
 RUN apt update && apt install -y $RUNTIME_DEPS
@@ -106,8 +105,8 @@ ARG TREX_LIBS
 # Install Trex library
 ENV TREX_SCRIPT_DIR=/trex-core-${TREX_VER}/scripts
 # RUN apt update && apt install -y wget
-RUN wget https://github.com/stratum/trex-core/archive/refs/tags/v${TREX_VER}.tar.gz
-RUN tar xf v${TREX_VER}.tar.gz && \
+RUN wget https://github.com/stratum/trex-core/archive/${TREX_VER}.zip
+RUN unzip -qq ${TREX_VER}.zip && \
     mkdir -p /output/${TREX_EXT_LIBS} && \
     mkdir -p /output/${TREX_LIBS} && \
     cp -r ${TREX_SCRIPT_DIR}/automation/trex_control_plane/interactive/* /output/${TREX_LIBS} && \
@@ -118,6 +117,7 @@ FROM ubuntu:20.04
 
 ARG TREX_EXT_LIBS
 ARG TREX_LIBS
+ARG SCAPY_VER
 
 #FIXME: Remove tcpdump, netbase after removing ptf
 ENV RUNTIME_DEPS \
@@ -141,6 +141,8 @@ ENV PYTHONPATH=${TREX_EXT_LIBS}:${TREX_LIBS}
 COPY --from=trex-builder /output /
 COPY --from=proto-deps /output /usr/lib/python3.8/dist-packages
 COPY --from=ptf-deps /python_output /
+# Install custom scapy version from TRex
+RUN cd ${TREX_EXT_LIBS}/scapy-${SCAPY_VER}/ && python3 setup.py install
 RUN ldconfig
 
 ENTRYPOINT []
