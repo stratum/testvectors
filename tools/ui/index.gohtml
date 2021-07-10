@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- Include from a free CDN -->
+    <script src="https://cdn.rawgit.com/caldwell/renderjson/master/renderjson.js"></script>
+    <style>
+        #container {
+            text-shadow: none;
+            background: #303030;
+            padding: 1em;
+        }
+
+        .renderjson a {
+            text-decoration: none;
+            color: dodgerblue;
+        }
+
+        .renderjson .disclosure {
+            color: gainsboro;
+            font-size: 150%;
+        }
+
+        .renderjson .syntax {
+            color: grey;
+        }
+
+        .renderjson .string {
+            color: red;
+        }
+
+        .renderjson .number {
+            color: cyan;
+        }
+
+        .renderjson .boolean {
+            color: plum;
+        }
+
+        .renderjson .key {
+            color: lightblue;
+        }
+
+        .renderjson .keyword {
+            color: lightgoldenrodyellow;
+        }
+
+        .renderjson .object.syntax {
+            color: lightseagreen;
+        }
+
+        .renderjson .array.syntax {
+            color: lightsalmon;
+        }
+    </style>
+</head>
+
+<body>
+    <p>hello world </p>
+    <!-- Element where the list will be created -->
+    <div id="container"></div>
+
+    <script>
+        var data = JSON.parse({{ . }});
+        // Render toggable list in the container element
+        document.getElementById("container").appendChild(
+            renderjson(data)
+        );
+    </script>
+</body>
+
+</html>
